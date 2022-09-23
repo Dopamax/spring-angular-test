@@ -16,6 +16,7 @@ import lu.atozdigital.api.repositories.IArticle;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 @Service
@@ -71,6 +72,25 @@ public class ServiceArticle {
     public ArticleDTO getArticle(int id){
 
       return ArticleMapper.toDTO(this.iarticle.findById(Long.valueOf(id)).get());
+
+    }
+
+    public ArrayList<ArticleDTO> getArticles(){
+
+      ArrayList<ArticleDTO> articlesDTO = new ArrayList<ArticleDTO>();
+
+      if(this.iarticle.findAll().size() != 0)
+      {
+
+        for(Article a : this.iarticle.findAll()){
+
+          articlesDTO.add(ArticleMapper.toDTO(a));
+
+        }
+  
+      }
+
+      return articlesDTO;
 
     }
 
