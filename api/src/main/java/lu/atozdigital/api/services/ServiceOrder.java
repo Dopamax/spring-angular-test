@@ -38,4 +38,31 @@ public class ServiceOrder {
       return ordersDTO;
     }
 
+    public Orders create(Orders order){
+
+      List<Character> sequence = new ArrayList<>();
+      
+      StringBuilder sbuilder = new StringBuilder();
+      
+      String alphanumerique = null;
+
+      for (char c = 'A' ; c <= 'Z' ; c++) {
+        sequence.add(c);
+      }
+
+      Collections.shuffle(sequence);
+
+      for (Character c : sequence) {
+        System.out.print(c);
+        sbuilder.append(c);
+      }
+
+      alphanumerique = sbuilder.toString();
+
+      order.setReference(alphanumerique);
+
+      return this.iorder.save(order);
+
+    }
+    
 }

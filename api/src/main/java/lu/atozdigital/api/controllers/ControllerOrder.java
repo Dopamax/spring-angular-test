@@ -29,4 +29,10 @@ public class ControllerOrder {
 
     }
 
+    @PostMapping(path = "/orders")
+    public Orders createOrder(@RequestBody Orders order){
+        return this.service.create(order);
+    }
+
+
 }
