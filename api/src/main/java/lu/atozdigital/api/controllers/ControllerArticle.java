@@ -26,5 +26,17 @@ public class ControllerArticle {
         return serviceArticle.Add(article,picture);
     }
 
+    @GetMapping(path = "/articles/{id}")
+    public ResponseEntity<Object> getArticle(@PathVariable int id){
+        try {
 
+            return new ResponseEntity<Object>(serviceArticle.getArticle(id),HttpStatus.OK);
+        
+        } catch (Exception e) {
+            
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            
+        }
+
+    }
 }

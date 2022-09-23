@@ -8,6 +8,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lu.atozdigital.api.DTO.Articles.ArticleDTO;
+import lu.atozdigital.api.Mappers.ArticleMapper;
 import lu.atozdigital.api.entities.Article;
 import lu.atozdigital.api.repositories.IArticle;
 
@@ -63,6 +65,13 @@ public class ServiceArticle {
           }
 
         return savedArticle;
+    }
+    
+
+    public ArticleDTO getArticle(int id){
+
+      return ArticleMapper.toDTO(this.iarticle.findById(Long.valueOf(id)).get());
+
     }
 
 }
