@@ -64,5 +64,31 @@ public class ServiceOrder {
       return this.iorder.save(order);
 
     }
+
+    public OrderDTO getOrder(int id){
+
+      return OrderMapper.toDTO(this.iorder.findById(Long.valueOf(id)).get());
+
+    }
+
+    public OrderDTO addArticleToOrder(int id, Article article){
+      Orders order = this.iorder.findById(Long.valueOf(id)).get();
+      try
+      {
+        
+        ArrayList<Article> articles = new ArrayList<Article>();
+        for(Article a : order.getArticles()){
+          articles.add(a);
+        }
+        articles.add(article);
+        order.setArticles(articles);
+        this.iorder.save(order);
+      }
+      catch(Exception e){
+        throw e;
+      }
+      
+      return OrderMapper.toDTO(order);
+    }
     
 }

@@ -34,5 +34,32 @@ public class ControllerOrder {
         return this.service.create(order);
     }
 
+    @GetMapping(path = "/orders/{id}")
+    public ResponseEntity<Object> getOrder(@PathVariable int id){
+
+        try {
+
+            return new ResponseEntity<Object>(service.getOrder(id),HttpStatus.OK);
+        
+        } catch (Exception e) {
+            
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            
+        }
+
+    }
+
+    @PutMapping(path = "/orders/{id}")
+    public ResponseEntity<Object> addArticleToAnOrder(@RequestBody Article article, @PathVariable int id){
+        try {
+
+            return new ResponseEntity<Object>(service.addArticleToOrder(id,article), HttpStatus.OK);
+        
+        } catch (Exception e) {
+            
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            
+        }
+    }
 
 }
