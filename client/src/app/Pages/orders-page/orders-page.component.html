@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h3 class="text-center my-3">Orders</h3>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Reference</th>
+                <th scope="col">Date</th>
+                <th scope="col">Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let o of orders">
+                <td>{{o.reference}}</td>
+                <td>{{o.date}}</td>
+                <td>
+                    <div class="d-grid gap-2">
+                        <button type="button" routerLink="/order/edit/{{o.id}}" class="btn btn-primary">Edit</button>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-outline-primary" (click)="createOrder()">Add</button>
+    </div>
+</div>

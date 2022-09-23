@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+
+<div class="row mt-5">
+    <div class="col-md-1"></div>
+    <div class="col">
+        <div class="row">
+            <div class="col mt-4" *ngFor="let a of articles">
+                <app-article-card name="{{a.name}}" price="{{a.price}}" picture="{{a.picture}}"></app-article-card>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <button type="button" class="btn btn-outline-primary" routerLink="/articles/add">Add</button>
+    </div>
+</div>

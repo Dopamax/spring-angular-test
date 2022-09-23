@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+        <div class="d-block justify-content-center">
+            <h3 class="text-center mb-3">Create article</h3>
+            <form action="" method="post" enctype="multipart/form-data" (submit)="createArticle()">
+                <div class="form-group mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" [(ngModel)]="article.name" name="name" id="name" class="form-control" placeholder="" aria-describedby="Name">
+                  <small id="Name" class="text-muted"></small>
+                </div>
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price</label>
+                  <input type="text" [(ngModel)]="article.price" name="price" id="price" class="form-control" placeholder="" aria-describedby="pricehelp">
+                  <small id="pricehelp" class="text-muted"></small>
+                </div>
+                <div class="mb-3">
+                  <label for="picture" class="form-label">Picture</label>
+                  <input type="file" class="form-control" accept="images/*" (change)="onSelectPicture($event)" name="picture" id="picture" placeholder="" aria-describedby="picturehelp">
+                  <div id="picturehelp" class="form-text"></div>
+                </div>
+                <div class="d-grid gap-2">
+                  <button type="submit" name="create" id="create" class="btn btn-success mt-3">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
