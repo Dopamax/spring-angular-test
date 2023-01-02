@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { OrdersService } from 'src/app/Services/Orders/orders.service';
-import { Order } from "../../Interfaces/Order"
+import { Order } from "../../Models/Order"
 
 @Component({
   selector: 'app-orders-page',
@@ -8,8 +9,8 @@ import { Order } from "../../Interfaces/Order"
   styleUrls: ['./orders-page.component.css']
 })
 export class OrdersPageComponent implements OnInit {
-  orders:Order[] = []
 
+  orders:Order[] = []
   constructor(private service:OrdersService) { }
 
   ngOnInit(): void {
@@ -17,10 +18,18 @@ export class OrdersPageComponent implements OnInit {
   }
 
   getOrders(){
-    this.orders = this.service.getOrders()
+    this.service.getOrders().subscribe({
+      next : res => {
+        this.orders = res
+      }
+    })
   }
 
   createOrder(){
-    this.service.createOrder();
+    this.service.createOrder().subscribe({
+      next: r => {
+         this.ngOnInit();
+      }
+    });
   }
 }

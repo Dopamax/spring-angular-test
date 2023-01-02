@@ -1,31 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Article } from 'src/app/Interfaces/Article';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Article } from 'src/app/Models/Article';
 import { environment } from 'src/environments/environment';
-import { APIServiceService } from '../GlobalConstants/apiservice.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleServiceService {
 
-  articles:Article[]=[]
-
   constructor(private http:HttpClient) { }
 
-  createArticle(article :any){
-    this.http.post(environment.apiURL + "articles", article)
-    .subscribe()
+  createArticle(article:any):Observable<Article>{
+    return this.http.post<Article>(environment.apiURL + "articles", article)
   }
 
-  getArticles(){
-    this.http.get<Article[]>(environment.apiURL + "articles")
-    .subscribe({
-      next: r => {
-        this.articles = r;
-      }
-    })
-
-    return this.articles;
+  getArticles():Observable<Article[]>{
+   return this.http.get<Article[]>(environment.apiURL + "articles")
   }
 }

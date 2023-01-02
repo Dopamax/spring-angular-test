@@ -9,6 +9,7 @@ import lu.atozdigital.api.DTO.Orders.OrderDTO;
 import lu.atozdigital.api.Mappers.OrderMapper;
 import lu.atozdigital.api.entities.Orders;
 import lu.atozdigital.api.entities.Article;
+import lu.atozdigital.api.repositories.IArticle;
 import lu.atozdigital.api.repositories.IOrder;
 
 import java.util.List;
@@ -18,16 +19,16 @@ import java.util.Collections;
 public class ServiceOrder {
     
     @Autowired
-    IOrder iorder;
+    IOrder iOrder;
     
     public ArrayList<OrderDTO> getOrders(){
         
         ArrayList<OrderDTO> ordersDTO = new ArrayList<OrderDTO>();
 
-      if(this.iorder.findAll().size() != 0)
+      if(this.iOrder.findAll().size() != 0)
       {
 
-        for(Orders a : this.iorder.findAll()){
+        for(Orders a : this.iOrder.findAll()){
 
           ordersDTO.add(OrderMapper.toDTO(a));
 
@@ -61,28 +62,28 @@ public class ServiceOrder {
 
       order.setReference(alphanumerique);
 
-      return this.iorder.save(order);
+      return this.iOrder.save(order);
 
     }
 
     public OrderDTO getOrder(int id){
 
-      return OrderMapper.toDTO(this.iorder.findById(Long.valueOf(id)).get());
+      return OrderMapper.toDTO(this.iOrder.findById(Long.valueOf(id)).get());
 
     }
 
     public OrderDTO addArticleToOrder(int id, Article article){
-      Orders order = this.iorder.findById(Long.valueOf(id)).get();
+      Orders order = this.iOrder.findById(Long.valueOf(id)).get();
       try
       {
         
-        ArrayList<Article> articles = new ArrayList<Article>();
-        for(Article a : order.getArticles()){
+        //ArrayList<Article> articles = new ArrayList<Article>();
+        /*for(Article a : order.getArticles()){
           articles.add(a);
-        }
-        articles.add(article);
-        order.setArticles(articles);
-        this.iorder.save(order);
+        }*/
+        //articles.add(article);
+        order.getArticles().add(article);
+        this.iOrder.save(order);
       }
       catch(Exception e){
         throw e;
@@ -90,5 +91,4 @@ public class ServiceOrder {
       
       return OrderMapper.toDTO(order);
     }
-    
 }

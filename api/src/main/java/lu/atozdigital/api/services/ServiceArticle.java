@@ -33,7 +33,7 @@ public class ServiceArticle {
         
         String fileName = picture.getOriginalFilename();
         
-        Path root = Paths.get("uploads");
+        Path root = Paths.get("api/uploads");
         
         boolean folderNotExist = Files.notExists(root);
         
@@ -67,7 +67,7 @@ public class ServiceArticle {
 
         return savedArticle;
     }
-    
+
 
     public ArticleDTO getArticle(int id){
 
@@ -93,5 +93,4 @@ public class ServiceArticle {
       return articlesDTO;
 
     }
-
 }

@@ -36,8 +36,10 @@ export class CreateArticleComponent implements OnInit {
     this.upload.append("picture",this.picture)
     this.upload.append("article",JSON.stringify(this.article))
     //this.service.uploadPicture(this.upload)
-    this.service.createArticle(this.upload)
-    
-    this.router.navigateByUrl("/articles");
+    this.service.createArticle(this.upload).subscribe({
+      next:r => {
+        this.router.navigate(["/articles"]);
+      }
+    }) 
   }
 }

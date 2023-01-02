@@ -1,15 +1,16 @@
 <app-navbar></app-navbar>
 
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <h3 class="text-center my-3">Orders</h3>
-        <table class="table">
+<div class="row mt-5 page-border"> 
+    <div class="col-md-1"></div>
+    <div class="col">
+      <h2 class="text-center">Orders</h2>
+     
+          <table class="order-table table-responsive table-hover">
             <thead>
               <tr>
-                <th scope="col">Reference</th>
-                <th scope="col">Date</th>
-                <th scope="col">Edit</th>
+                <th scope="col text-center">Reference</th>
+                <th scope="col text-center">Date</th>
+                <th scope="col text-center">Edit</th>
               </tr>
             </thead>
             <tbody>
@@ -18,14 +19,15 @@
                 <td>{{o.date}}</td>
                 <td>
                     <div class="d-grid gap-2">
-                        <button type="button" routerLink="/order/edit/{{o.id}}" class="btn btn-primary">Edit</button>
+                        <button type="button" routerLink="/order/edit/{{o.id}}" class="btn-edit">Edit</button>
                     </div>
                 </td>
               </tr>
             </tbody>
           </table>
-    </div>
-    <div class="col-md-2">
-        <button type="button" class="btn btn-outline-primary" (click)="createOrder()">Add</button>
+        </div>
+
+    <div class="col-md-1">
+        <button type="button" class="btn-add me-4" (click)="createOrder()">Add</button>
     </div>
 </div>

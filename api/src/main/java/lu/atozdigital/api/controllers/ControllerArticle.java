@@ -39,11 +39,12 @@ public class ControllerArticle {
         }
 
     }
-    
+
     @GetMapping(path = "/articles")
     public ResponseEntity<Object> getArticles(){
      
         return new ResponseEntity<Object>(serviceArticle.getArticles(),HttpStatus.OK);
 
     }
+
 }

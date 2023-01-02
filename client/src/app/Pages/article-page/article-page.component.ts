@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from 'src/app/Interfaces/Article';
+import { Article } from 'src/app/Models/Article'
 import { ArticleServiceService } from 'src/app/Services/Articles/article-service.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ArticleServiceService } from 'src/app/Services/Articles/article-service
 })
 export class ArticlePageComponent implements OnInit {
 
-  articles :Article[]=[];
+  articles:Article[] = [];
 
   constructor(private service : ArticleServiceService) { }
 
@@ -18,9 +18,10 @@ export class ArticlePageComponent implements OnInit {
   }
 
   getArticles(){
-    this.articles =  this.service.getArticles()
-    console.log('====================================');
-    console.log(this.articles);
-    console.log('====================================');
+    this.service.getArticles().subscribe({
+      next: res => {
+        this.articles = res
+      }
+    })
   }
 }

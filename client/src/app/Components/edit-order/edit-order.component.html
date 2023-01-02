@@ -1,22 +1,55 @@
 <app-navbar></app-navbar>
+<div *ngIf="modeSelection;then ModeSelection else ModeNormal"></div>
 
-<div class="row">
-    <h3 class="text-center display-5">Edit order {{id}}</h3>
-    <div class="col-md-2"></div>
-    <div class="col-md-7">
+<ng-template #ModeSelection>
+    <div class="page-border">
+    <button class="btn-select mt-2 ms-2" (click)="switchMode()">Back</button>
         <div class="row">
-            <div class="col mt-4" *ngFor="let a of articlesOfOrder">
-                <app-article-card name="{{a.name}}" price="{{a.price}}" picture="{{a.picture}}"></app-article-card>
+            <h5 class="h5 text-center my-3">Please choose one of those articles...</h5>
+            <div class="col mt-4" *ngFor="let a of articles">
+                <div class="article-card scale-animation" style="width: 18rem;">
+                    <img src="assets/{{a.picture}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{a.name}}</h5>
+                    <h5 class="card-text"><span class="badge bg-danger">{{a.price}}</span></h5>
+                    </div>
+                    <button class="btn-add" (click)="addArticleToOrder(a.id,a.name,a.price,a.picture)">Add</button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3 d-block justify-content-center">
-        <form action="" method="post" (submit)="editOrder()">
-            <div class="mb-3 px-3">
-                <label for="articleId" class="form-label">Article id</label>
-                <input type="text" [(ngModel)]="articleId" name="articleId" id="articleId" class="form-control" placeholder="">
-                <button type="submit" class="btn btn-success mt-3">Add article</button>
-            </div>
-        </form>
+
+        
+</ng-template>
+
+<ng-template #ModeNormal>
+   <div class="page-border">
+    <button class="btn-select mt-2 ms-2" (click)="switchMode()">Select an article</button>
+    <div class="row">
+        <div class="col d-block justify-content-center">
+            <h3 class="text-center display-5">Articles of order {{id}}</h3>
+        </div>
     </div>
-</div>
+    <div *ngIf="empty;then Empty else notEmpty"></div>
+    <ng-template #notEmpty>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col mt-4" *ngFor="let a of articlesOfOrder">
+                        <app-article-card name="{{a.name}}" price="{{a.price}}" picture="{{a.picture}}"></app-article-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #Empty>
+        <div class="row">
+            <div class="col d-flex align-items-center justify-content-center">
+               <h5 class="h5 text-center pt-4 mt-5">Please add a new article...</h5>
+            </div>
+        </div>
+    </ng-template>
+   </div>
+
+</ng-template>
+

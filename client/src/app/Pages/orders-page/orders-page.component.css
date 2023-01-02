@@ -1,0 +1,58 @@
+.page-border{
+    border: 3px solid #c3224a;
+    border-radius: 30px;
+    padding: 50px;
+    margin: 20px;
+}
+
+.btn-add{
+    width: 150px;
+    background-color: #c3224a;
+    color: white;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.btn-add:hover{
+  box-shadow: 5px 5px 0px black;
+}
+
+.btn-edit{
+    width: 150px;
+    background-color: #000000;
+    color: white;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.btn-edit:hover{
+  box-shadow: 5px 5px 0px black;
+}
+
+.order-table{
+    background-color: #c3224a;
+    color: white;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 10px;
+    width: 60vw;
+}
+
+.order-table > thead > tr > th{
+    width: 80vw;
+    padding: 10px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.order-table > tbody > tr:hover{
+   background-color: white;
+   color: black;
+}
+
+.order-table > tbody > tr > td{
+    width: 85vw;
+    padding: 10px;
+    text-align: center;
+    font-weight: 300;
+}

@@ -1,0 +1,25 @@
+.article-card > img{
+    width: 250px;
+    height: 150px;
+    margin-inline: 15px;
+    padding: 8px;
+}
+
+.article-card {
+    transition: scale(100%) 1s ease-in-out;
+    border: 2px solid black;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display: block;
+    
+}
+
+.scale-animation {
+    transition: transform 0.4s ease-in-out;
+    transform: scale(1);
+}
+  
+.scale-animation:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 0px black;
+}

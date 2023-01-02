@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div class="row">
+<div class="row page-border">
     <div class="col-md-12 d-flex justify-content-center">
         <div class="d-block justify-content-center">
             <h3 class="text-center mb-3">Create article</h3>
@@ -20,8 +20,8 @@
                   <input type="file" class="form-control" accept="images/*" (change)="onSelectPicture($event)" name="picture" id="picture" placeholder="" aria-describedby="picturehelp">
                   <div id="picturehelp" class="form-text"></div>
                 </div>
-                <div class="d-grid gap-2">
-                  <button type="submit" name="create" id="create" class="btn btn-success mt-3">Create</button>
+                <div class="d-grid gap-2 d-flex justify-content-center">
+                  <button type="submit" name="create" id="create" class="btn-add mt-3">Create</button>
                 </div>
             </form>
         </div>
